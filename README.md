@@ -6,6 +6,14 @@ Live at [thewittyswan.space](https://thewittyswan.space).
 
 Built by **Dhawal**.
 
+## What this repository demonstrates
+
+This is a deliberately low-complexity publishing platform with a clear
+content pipeline: write Markdown, manage it through Decap CMS, generate a
+static site with Jekyll, and deploy immutable output through Vercel. The
+portfolio is complemented by the independent Go terminal repository, which
+consumes this site's public `posts.json` and `portfolio.json` feeds.
+
 ## Why this stack
 
 I'm a backend person at heart. Databases, APIs, servers — that's where
@@ -38,8 +46,34 @@ about the backend of things.
 
 This is one of two repos. The other, `thewittyswan-terminal`, is a
 Go-based interactive terminal at `/terminal`, self-hosted separately on a
-GCP VM. The two are independent — this site works standalone even if the
-terminal is down.
+GCP e2-micro VM. The two are independent — this site works standalone even if
+the terminal is down.
+
+## Content architecture
+
+```text
+Author
+  │
+  ├── Markdown posts/pages ──► GitHub repository
+  │                              │
+  │                              ├── Jekyll build
+  │                              ├── posts.json
+  │                              └── portfolio.json
+  │
+  └── Decap CMS / GitHub OAuth
+             │
+             └── Cloudinary media uploads
+
+Vercel
+  └── Jekyll site at thewittyswan.space
+
+GCP e2-micro VM
+  └── Caddy → Go terminal at thewittyswan.space/terminal
+```
+
+The generated JSON feeds are an explicit integration boundary rather than a
+shared database. This keeps the portfolio deployable as a static site while
+allowing the terminal to provide a dynamic reading and profile experience.
 
 ## Local setup
 
@@ -74,7 +108,34 @@ backend mode, no OAuth needed for local testing.
 
 ## Deployment
 
-Pushing to `main` auto-deploys via Vercel. No manual build step needed.
+Pushing to `main` auto-deploys the Jekyll site via Vercel. The GCP VM is
+managed separately through the completed SSH/bash deployment workflow, with
+Caddy handling HTTPS and path routing for the terminal.
+
+The `/admin/` workflow uses Decap CMS with GitHub-backed content updates.
+`admin/config.yml` defines the editable collections, media library, OAuth
+backend, and local development mode. The terminal service does not access the
+GitHub repository directly; it reads only the public generated feeds.
+
+## Repository map
+
+| Path | Responsibility |
+|---|---|
+| `_posts/` | Network-security and literature content |
+| `home/`, `about/`, `projects/`, `glossary/`, `recommends/` | Structured site pages |
+| `admin/config.yml` | Decap CMS collections and media configuration |
+| `posts.json` | Public feed consumed by the terminal |
+| `portfolio.json` | Structured profile, projects, skills, and resume metadata |
+| `assets/css/main.scss` | Site-wide styling |
+
+## Security and operations
+
+- GitHub OAuth is handled by the dedicated Decap OAuth service.
+- Cloudinary stores uploaded editorial media; credentials are not part of the
+  static site output.
+- The site has no runtime database or public server-side application process.
+- The terminal is deployed separately, so a terminal outage does not take down
+  the portfolio and blog.
 
 ## License
 
