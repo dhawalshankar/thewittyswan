@@ -4,66 +4,33 @@ sync_resume.py
 Automated synchronization script that:
 1. Downloads the latest resume PDF from Google Drive.
 2. Checks SHA-256 hash against .resume_hash to detect actual changes.
-3. If changed (or --force), sends the resume PDF to Google's Gemini API
+3. If changed (or --force), extracts the resume text and sends it to Groq
    together with the current portfolio.json.
 4. Generates updated portfolio.json and syncs projects/index.md.
 5. Updates .resume_hash so future runs skip when unchanged.
 """
 
+import io
 import os
 import sys
 import json
-import base64
 import hashlib
 import argparse
 import time
 from datetime import datetime
 import urllib.request
 import urllib.error
+from dotenv import load_dotenv
+from pypdf import PdfReader
+
+load_dotenv()
 
 DEFAULT_DRIVE_FILE_ID = "1zodZ1AqMNmWbzGSzmJerYLQGAHMEUwTa"
 HASH_FILE = ".resume_hash"
 PORTFOLIO_FILE = "portfolio.json"
 PROJECTS_FILE = os.path.join("projects", "index.md")
-
-GEMINI_MODELS = [
-    "gemini-flash-lite-latest",
-    "gemini-flash-latest",
-    "gemini-2.5-flash",
-    "gemini-2.5-flash-lite",
-    "gemini-2.0-flash",
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-latest"
-]
-
-
-def resolve_gemini_models(api_key: str) -> list[str]:
-    """Discover available Gemini models, preferring the configured aliases."""
-    url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-    except Exception as exc:
-        raise RuntimeError(f"Unable to list available Gemini models: {exc}") from exc
-
-    available = []
-    for model in payload.get("models", []):
-        name = model.get("name", "")
-        if not name:
-            continue
-        methods = model.get("supportedGenerationMethods")
-        if methods and "generateContent" not in methods:
-            continue
-        short_name = name.rsplit("/", 1)[-1]
-        if "gemini" in short_name.lower():
-            available.append(short_name)
-
-    if not available:
-        raise RuntimeError("No Gemini models supporting content generation were returned by the API.")
-
-    preferred_models = [model for model in GEMINI_MODELS if model in available]
-    return preferred_models + [model for model in available if model not in preferred_models]
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 
 def compute_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -106,16 +73,25 @@ def download_google_drive_pdf(file_id: str) -> bytes:
             
     raise RuntimeError(f"Could not download valid PDF from Google Drive for file ID {file_id}. Last error: {last_err}")
 
-def call_gemini_with_pdf(api_key: str, pdf_bytes: bytes, current_portfolio: dict) -> dict:
-    """Send resume PDF directly to Gemini API alongside current portfolio.json."""
-    pdf_b64 = base64.b64encode(pdf_bytes).decode("utf-8")
+def extract_resume_text(pdf_bytes: bytes) -> str:
+    """Extract selectable text from the downloaded resume PDF."""
+    reader = PdfReader(io.BytesIO(pdf_bytes))
+    text = "\n".join(page.extract_text() or "" for page in reader.pages).strip()
+    if not text:
+        raise RuntimeError("Resume PDF contains no extractable text; scanned PDFs require OCR.")
+    return text
+
+
+def call_groq_with_resume(api_key: str, pdf_bytes: bytes, current_portfolio: dict) -> dict:
+    """Send extracted resume text and portfolio JSON to Groq's chat API."""
+    resume_text = extract_resume_text(pdf_bytes)
     current_json_str = json.dumps(current_portfolio, indent=2)
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     prompt = f"""
 You are an expert technical portfolio updater.
 You are given:
-1. The user's latest resume as an attached PDF document.
+1. The user's latest resume as extracted text.
 2. The user's current 'portfolio.json' file content.
 
 Today's date is: {today_str}
@@ -150,83 +126,61 @@ IMPORTANT FORMATTING RULES:
 - Do NOT wrap in markdown fences (e.g. ```json). Just the raw JSON.
 - Maintain valid JSON syntax.
 
+RESUME TEXT:
+{resume_text}
+
 CURRENT PORTFOLIO.JSON:
 {current_json_str}
 """
 
     payload = {
-        "contents": [
-            {
-                "parts": [
-                    {
-                        "inline_data": {
-                            "mime_type": "application/pdf",
-                            "data": pdf_b64
-                        }
-                    },
-                    {
-                        "text": prompt
-                    }
-                ]
-            }
+        "model": GROQ_MODEL,
+        "messages": [
+            {"role": "system", "content": "Update the portfolio JSON using only the supplied resume and current portfolio."},
+            {"role": "user", "content": prompt}
         ],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "temperature": 0.1
-        }
+        "response_format": {"type": "json_object"},
+        "temperature": 0.1,
+        "max_completion_tokens": 16000
     }
 
     req_data = json.dumps(payload).encode("utf-8")
-
     last_err = None
-    try:
-        candidate_models = resolve_gemini_models(api_key)
-    except RuntimeError as exc:
-        last_err = exc
-        candidate_models = GEMINI_MODELS
-
-    for model in candidate_models:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
-        for attempt in range(3):
-            try:
-                req = urllib.request.Request(
-                    url,
-                    data=req_data,
-                    headers={"Content-Type": "application/json"}
-                )
-                with urllib.request.urlopen(req, timeout=90) as resp:
-                    resp_json = json.loads(resp.read().decode("utf-8"))
-                    candidate = resp_json["candidates"][0]["content"]["parts"]
-                    text_parts = []
-                    for part in candidate:
-                        if "text" in part:
-                            text_parts.append(part["text"])
-                    if not text_parts:
-                        raise RuntimeError("Gemini response did not contain any textual output.")
-                    cleaned_text = "".join(text_parts).strip()
-                    if cleaned_text.startswith("```json"):
-                        cleaned_text = cleaned_text[7:]
-                    if cleaned_text.startswith("```"):
-                        cleaned_text = cleaned_text[3:]
-                    if cleaned_text.endswith("```"):
-                        cleaned_text = cleaned_text[:-3]
-                    return json.loads(cleaned_text.strip())
-            except urllib.error.HTTPError as exc:
-                response_body = exc.read().decode("utf-8", errors="replace")
-                last_err = f"HTTP {exc.code}: {response_body[:500]}"
-                if exc.code not in (429, 500, 502, 503, 504):
-                    break
-                if attempt < 2:
-                    time.sleep(2 ** attempt)
-            except (urllib.error.URLError, TimeoutError) as exc:
-                last_err = str(exc)
-                if attempt < 2:
-                    time.sleep(2 ** attempt)
-            except Exception as exc:
-                last_err = exc
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(
+                GROQ_API_URL,
+                data=req_data,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json"
+                }
+            )
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                resp_json = json.loads(resp.read().decode("utf-8"))
+            content = resp_json["choices"][0]["message"]["content"]
+            if not content:
+                raise RuntimeError("Groq response did not contain any textual output.")
+            result = json.loads(content)
+            if not isinstance(result, dict):
+                raise RuntimeError("Groq response was valid JSON but not a JSON object.")
+            return result
+        except urllib.error.HTTPError as exc:
+            response_body = exc.read().decode("utf-8", errors="replace")
+            last_err = f"HTTP {exc.code}: {response_body[:500]}"
+            if exc.code not in (429, 500, 502, 503, 504):
                 break
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last_err = str(exc)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+        except Exception as exc:
+            last_err = exc
+            break
 
-    raise RuntimeError(f"Gemini API request failed across all available models. Last error: {last_err}")
+    raise RuntimeError(f"Groq API request failed after retries. Last error: {last_err}")
 
 def render_projects_markdown(portfolio: dict) -> str:
     """Deterministically render projects/index.md from portfolio.json data."""
@@ -365,9 +319,9 @@ def main():
         print("Render complete!")
         return
 
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
-        print("ERROR: GEMINI_API_KEY environment variable is required.", file=sys.stderr)
+        print("ERROR: GROQ_API_KEY environment variable is required.", file=sys.stderr)
         sys.exit(1)
 
     print(f"Checking Google Drive for resume file ID: {args.file_id}...")
@@ -384,11 +338,11 @@ def main():
         print("No changes detected in resume PDF since last sync. Portfolio is up to date!")
         return
 
-    print("Resume update detected (or --force). Updating portfolio using Gemini...")
+    print(f"Resume update detected (or --force). Updating portfolio using Groq ({GROQ_MODEL})...")
     with open(PORTFOLIO_FILE, "r", encoding="utf-8") as f:
         current_portfolio = json.load(f)
 
-    updated_portfolio = call_gemini_with_pdf(api_key, pdf_bytes, current_portfolio)
+    updated_portfolio = call_groq_with_resume(api_key, pdf_bytes, current_portfolio)
     
     # Save updated portfolio.json
     with open(PORTFOLIO_FILE, "w", encoding="utf-8") as f:

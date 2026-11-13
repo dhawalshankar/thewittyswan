@@ -106,6 +106,14 @@ backend mode, no OAuth needed for local testing.
 - `assets/css/main.scss` — all site styling, single file
 - `admin/config.yml` — Decap CMS configuration
 
+## Resume sync
+
+The monthly GitHub Action downloads the resume PDF, extracts its text, and
+uses Groq to update `portfolio.json` and `projects/index.md`. Add a repository
+Actions secret named `GROQ_API_KEY`; locally, the script can read the same key
+from an ignored `.env` file. Install its Python dependencies with
+`python -m pip install -r requirements.txt`.
+
 ## Deployment
 
 Pushing to `main` auto-deploys the Jekyll site via Vercel. The GCP VM is
@@ -126,7 +134,7 @@ GitHub repository directly; it reads only the public generated feeds.
 | `admin/config.yml` | Decap CMS collections and media configuration |
 | `posts.json` | Public feed consumed by the terminal |
 | `portfolio.json` | Structured profile, projects, skills, and resume metadata |
-| `scripts/sync_resume.py` | Automated sync script parsing Drive resume PDF via Gemini API |
+| `scripts/sync_resume.py` | Automated sync script extracting Drive resume PDF text and updating the portfolio via Groq |
 | `.github/workflows/` | Monthly automated resume sync GitHub Action |
 | `assets/css/main.scss` | Site-wide styling |
 
