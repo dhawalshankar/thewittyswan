@@ -2,9 +2,9 @@
   "meta": {
     "website": "https://thewittyswan.space",
     "terminal": "https://thewittyswan.space/terminal",
-    "portfolio_version": "1.2",
+    "portfolio_version": "1.3",
     "last_updated": "2026-11-13",
-    "resume_version": "2026.2"
+    "resume_version": "2026.3"
   },
   "profile": {
     "name": "Dhawal Shukla",
@@ -42,21 +42,21 @@
     }
   },
   "resume": {
-    "summary": "Backend Software Engineer focused on Go, Node.js and Python. Projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. Founder of GolangForAll developer community.",
+    "summary": "Backend Software Engineer focused on Go, Node.js and Python. My projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. I also founded GolangForAll to share Go learning resources and bring developers together.",
     "pdf_url": "https://drive.google.com/file/d/1zodZ1AqMNmWbzGSzmJerYLQGAHMEUwTa/view?usp=sharing"
   },
   "education": [
     {
-      "degree": "B.Tech in Electronics & Communication Engineering",
+      "degree": "B.Tech (ECE)",
       "institute": "Jaypee Institute of Information Technology – Noida",
       "duration": "2023 – 2027",
       "details": "7.37 CGPA"
     },
     {
-      "degree": "12th (CISCE Board)",
+      "degree": "12th",
       "institute": "The Chintels School",
       "duration": "2023",
-      "details": "92.25%"
+      "details": "92.25% (CISCE Board)"
     }
   ],
   "experience": [
@@ -78,12 +78,13 @@
         "Gemini API",
         "Groq (Llama API)",
         "RapidFuzz",
-        "Firebase Auth",
+        "Firebase",
         "Turso",
         "Neon PostgreSQL",
         "Cloudinary",
         "WeasyPrint",
-        "GitHub Actions"
+        "GitHub Actions",
+        "TypeScript"
       ]
     },
     {
@@ -151,9 +152,11 @@
         "PostgreSQL",
         "JWT",
         "Sarvam AI",
+        "Google Cloud",
         "Razorpay",
         "Vercel",
-        "Render"
+        "Render",
+        "GitHub Actions"
       ],
       "link": "https://vartalang.in",
       "github": "",
@@ -184,14 +187,14 @@
     },
     {
       "name": "thewittyswan Terminal",
-      "description": "Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab (TLS inspection, DNS diagnostics, HTTP security header auditing, port reachability checks, and OSV.dev-backed dependency vulnerability lookups), all guarded against SSRF via strict host/IP validation on every outbound check.",
+      "description": "Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab, all guarded against SSRF via strict host/IP validation on every outbound check.",
       "stack": [
         "Go",
         "xterm.js",
         "GCP Compute Engine",
         "Caddy",
         "systemd",
-        "OSV.dev API"
+        "GitHub Actions"
       ],
       "link": "https://thewittyswan.space/terminal",
       "github": "",

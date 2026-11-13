@@ -26,10 +26,43 @@ PORTFOLIO_FILE = "portfolio.json"
 PROJECTS_FILE = os.path.join("projects", "index.md")
 
 GEMINI_MODELS = [
+    "gemini-flash-lite-latest",
+    "gemini-flash-latest",
     "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
     "gemini-2.0-flash",
-    "gemini-1.5-flash"
+    "gemini-1.5-flash",
+    "gemini-1.5-flash-latest"
 ]
+
+
+def resolve_gemini_model(api_key: str) -> str:
+    """Discover the first available Gemini model for the current API key."""
+    url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+    except Exception as exc:
+        raise RuntimeError(f"Unable to list available Gemini models: {exc}") from exc
+
+    available = []
+    for model in payload.get("models", []):
+        name = model.get("name", "")
+        if not name:
+            continue
+        short_name = name.rsplit("/", 1)[-1]
+        if "gemini" in short_name.lower():
+            available.append(short_name)
+
+    if not available:
+        raise RuntimeError("No Gemini models were returned by the API for this key.")
+
+    for preferred in GEMINI_MODELS:
+        if preferred in available:
+            return preferred
+
+    return available[0]
 
 def compute_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -137,15 +170,22 @@ CURRENT PORTFOLIO.JSON:
             }
         ],
         "generationConfig": {
-            "response_mime_type": "application/json",
+            "responseMimeType": "application/json",
             "temperature": 0.1
         }
     }
 
     req_data = json.dumps(payload).encode("utf-8")
-    
+
     last_err = None
-    for model in GEMINI_MODELS:
+    selected_model = None
+    try:
+        selected_model = resolve_gemini_model(api_key)
+    except RuntimeError as exc:
+        last_err = exc
+
+    candidate_models = [selected_model] if selected_model else GEMINI_MODELS
+    for model in candidate_models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
         try:
             req = urllib.request.Request(
@@ -155,8 +195,14 @@ CURRENT PORTFOLIO.JSON:
             )
             with urllib.request.urlopen(req, timeout=90) as resp:
                 resp_json = json.loads(resp.read().decode("utf-8"))
-                candidate = resp_json["candidates"][0]["content"]["parts"][0]["text"]
-                cleaned_text = candidate.strip()
+                candidate = resp_json["candidates"][0]["content"]["parts"]
+                text_parts = []
+                for part in candidate:
+                    if "text" in part:
+                        text_parts.append(part["text"])
+                if not text_parts:
+                    raise RuntimeError("Gemini response did not contain any textual output.")
+                cleaned_text = "".join(text_parts).strip()
                 if cleaned_text.startswith("```json"):
                     cleaned_text = cleaned_text[7:]
                 if cleaned_text.startswith("```"):
@@ -169,7 +215,7 @@ CURRENT PORTFOLIO.JSON:
             last_err = e
             continue
 
-    raise RuntimeError(f"Gemini API request failed across all models. Last error: {last_err}")
+    raise RuntimeError(f"Gemini API request failed across all available models. Last error: {last_err}")
 
 def render_projects_markdown(portfolio: dict) -> str:
     """Deterministically render projects/index.md from portfolio.json data."""

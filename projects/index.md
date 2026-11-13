@@ -38,7 +38,7 @@ Language exchange and learning platform featuring real-time chat, reciprocal mul
 - Kept expired listings in the admin panel for manual paid extensions, then automated cleanup with MongoDB TTL.
 - Selected for the Sarvam Startup Program; advanced to RideHack JIIT Round 2 for funding.
 - **impact:** Combined language exchange, real-time messaging, reciprocal matching, and LMS course monetization into a production platform.
-- **built with:** Next.js · Node.js · Express.js · Socket.IO · MongoDB · PostgreSQL · JWT · Sarvam AI · Razorpay · Vercel · Render
+- **built with:** Next.js · Node.js · Express.js · Socket.IO · MongoDB · PostgreSQL · JWT · Sarvam AI · Google Cloud · Razorpay · Vercel · Render · GitHub Actions
 
 ---
 
@@ -55,10 +55,10 @@ AI-powered publishing and e-commerce platform for a family publishing house with
 
 ### [thewittyswan Terminal](https://thewittyswan.space/terminal)
 
-Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab (TLS inspection, DNS diagnostics, HTTP security header auditing, port reachability checks, and OSV.dev-backed dependency vulnerability lookups), all guarded against SSRF via strict host/IP validation on every outbound check.
+Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab, all guarded against SSRF via strict host/IP validation on every outbound check.
 
 - **impact:** A personal corner of the internet where writing and engineering don't have to live in separate rooms.
-- **built with:** Go · xterm.js · GCP Compute Engine · Caddy · systemd · OSV.dev API
+- **built with:** Go · xterm.js · GCP Compute Engine · Caddy · systemd · GitHub Actions
 
 ---
 
@@ -114,7 +114,7 @@ Two-way elective course matcher with priority-ranked preferences, real-time upda
 - Delivered a deployed Next.js demo with separately deployed Flask school and FastAPI Vritukul microservices; used Gemini to extract 100+ handwritten records and RapidFuzz-ranked search for about 30-second lookup.
 - Implemented Firebase-verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary.
 - Created calendar-grounded, staff-reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated Cape Comorin frontend merges on GitHub Actions lint, TypeScript checks and production builds.
-- **Tech:** Next.js · Flask · FastAPI · Gemini API · Groq (Llama API) · RapidFuzz · Firebase Auth · Turso · Neon PostgreSQL · Cloudinary · WeasyPrint · GitHub Actions
+- **Tech:** Next.js · Flask · FastAPI · Gemini API · Groq (Llama API) · RapidFuzz · Firebase · Turso · Neon PostgreSQL · Cloudinary · WeasyPrint · GitHub Actions · TypeScript
 
 ---
 
