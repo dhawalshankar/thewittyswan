@@ -31,6 +31,7 @@ PORTFOLIO_FILE = "portfolio.json"
 PROJECTS_FILE = os.path.join("projects", "index.md")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+USER_AGENT = "thewittyswan-resume-sync/1.0"
 
 def compute_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -153,7 +154,8 @@ CURRENT PORTFOLIO.JSON:
                 data=req_data,
                 headers={
                     "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "User-Agent": USER_AGENT
                 }
             )
             with urllib.request.urlopen(req, timeout=60) as resp:
