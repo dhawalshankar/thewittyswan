@@ -1,0 +1,81 @@
+<div class="page-transition" aria-hidden="true">
+  <img src="{{ '/assets/img/fly-swan.png' | relative_url }}" alt="" draggable="false">
+</div>
+<script>
+  (() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let navigating = false;
+
+    function playTransitionSound() {
+      const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextConstructor) {
+        return;
+      }
+
+      const context = new AudioContextConstructor();
+      const start = context.currentTime;
+      const duration = 1.8;
+      const noiseBuffer = context.createBuffer(1, context.sampleRate * duration, context.sampleRate);
+      const noise = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < noise.length; i++) {
+        noise[i] = Math.random() * 2 - 1;
+      }
+
+      const source = context.createBufferSource();
+      source.buffer = noiseBuffer;
+
+      const filter = context.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(350, start);
+      filter.frequency.exponentialRampToValueAtTime(1800, start + 0.9);
+      filter.frequency.exponentialRampToValueAtTime(250, start + duration);
+
+      const volume = context.createGain();
+      volume.gain.setValueAtTime(0.0001, start);
+      volume.gain.exponentialRampToValueAtTime(0.09, start + 0.3);
+      volume.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+
+      source.connect(filter).connect(volume).connect(context.destination);
+      source.start(start);
+      source.stop(start + duration);
+
+      const tone = context.createOscillator();
+      const toneVolume = context.createGain();
+      tone.type = 'sine';
+      tone.frequency.setValueAtTime(150, start);
+      tone.frequency.exponentialRampToValueAtTime(65, start + 1.4);
+      toneVolume.gain.setValueAtTime(0.0001, start);
+      toneVolume.gain.exponentialRampToValueAtTime(0.035, start + 0.18);
+      toneVolume.gain.exponentialRampToValueAtTime(0.0001, start + 1.4);
+      tone.connect(toneVolume).connect(context.destination);
+      tone.start(start);
+      tone.stop(start + 1.4);
+    }
+
+    document.addEventListener('click', (event) => {
+      if (navigating || reducedMotion.matches || event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const link = event.target.closest('a');
+      if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) {
+        return;
+      }
+
+      const destination = new URL(link.href, window.location.href);
+      if (!['http:', 'https:'].includes(destination.protocol) ||
+          destination.origin !== window.location.origin ||
+          (destination.pathname === window.location.pathname &&
+            destination.search === window.location.search)) {
+        return;
+      }
+
+      event.preventDefault();
+      navigating = true;
+      document.body.classList.add('page-transitioning');
+      window.setTimeout(() => window.location.assign(destination.href), 2100);
+      playTransitionSound();
+    });
+  })();
+</script>

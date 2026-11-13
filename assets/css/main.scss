@@ -136,6 +136,93 @@ main {
   width: 100%;
 }
 
+/* Swan page transition */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-transition img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(58vmin, 680px);
+  min-width: 9rem;
+  height: auto;
+  filter: drop-shadow(0 8px 12px rgba(30, 26, 20, 0.18));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.page-transition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 247, 242, 0.96);
+  clip-path: circle(0 at 50% 50%);
+}
+
+.page-transitioning .page-transition {
+  visibility: visible;
+}
+
+body.page-transitioning > :not(.page-transition) {
+  animation: page-shift 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  transform-origin: center;
+  will-change: transform, filter, opacity;
+}
+
+.page-transitioning .page-transition img {
+  animation: swan-flight 2s cubic-bezier(0.45, 0, 0.2, 1) both;
+}
+
+.page-transitioning .page-transition::before {
+  animation: transition-wash 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes swan-flight {
+  0% {
+    transform: translate3d(-135vw, 18vh, 0) rotate(-16deg) scale(0.42);
+  }
+  32% {
+    transform: translate3d(-35vw, -6vh, 0) rotate(-7deg) scale(0.72);
+  }
+  58% {
+    transform: translate3d(0, 0, 0) rotate(5deg) scale(1.25);
+  }
+  82% {
+    transform: translate3d(0, 0, 0) rotate(-3deg) scale(3.2);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0) scale(5.4);
+  }
+}
+
+@keyframes page-shift {
+  to {
+    transform: translate3d(-14vw, 0, 0) scale(0.96);
+    filter: blur(14px);
+    opacity: 0.45;
+  }
+}
+
+@keyframes transition-wash {
+  to {
+    clip-path: circle(120vmax at 50% 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transitioning .page-transition img,
+  .page-transitioning .page-transition::before {
+    animation: none;
+  }
+}
+
 /* Typographic hierarchy */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
