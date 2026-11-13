@@ -16,6 +16,7 @@ import json
 import base64
 import hashlib
 import argparse
+import time
 from datetime import datetime
 import urllib.request
 import urllib.error
@@ -36,8 +37,8 @@ GEMINI_MODELS = [
 ]
 
 
-def resolve_gemini_model(api_key: str) -> str:
-    """Discover the first available Gemini model for the current API key."""
+def resolve_gemini_models(api_key: str) -> list[str]:
+    """Discover available Gemini models, preferring the configured aliases."""
     url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -51,18 +52,18 @@ def resolve_gemini_model(api_key: str) -> str:
         name = model.get("name", "")
         if not name:
             continue
+        methods = model.get("supportedGenerationMethods")
+        if methods and "generateContent" not in methods:
+            continue
         short_name = name.rsplit("/", 1)[-1]
         if "gemini" in short_name.lower():
             available.append(short_name)
 
     if not available:
-        raise RuntimeError("No Gemini models were returned by the API for this key.")
+        raise RuntimeError("No Gemini models supporting content generation were returned by the API.")
 
-    for preferred in GEMINI_MODELS:
-        if preferred in available:
-            return preferred
-
-    return available[0]
+    preferred_models = [model for model in GEMINI_MODELS if model in available]
+    return preferred_models + [model for model in available if model not in preferred_models]
 
 def compute_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -178,42 +179,52 @@ CURRENT PORTFOLIO.JSON:
     req_data = json.dumps(payload).encode("utf-8")
 
     last_err = None
-    selected_model = None
     try:
-        selected_model = resolve_gemini_model(api_key)
+        candidate_models = resolve_gemini_models(api_key)
     except RuntimeError as exc:
         last_err = exc
+        candidate_models = GEMINI_MODELS
 
-    candidate_models = [selected_model] if selected_model else GEMINI_MODELS
     for model in candidate_models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
-        try:
-            req = urllib.request.Request(
-                url,
-                data=req_data,
-                headers={"Content-Type": "application/json"}
-            )
-            with urllib.request.urlopen(req, timeout=90) as resp:
-                resp_json = json.loads(resp.read().decode("utf-8"))
-                candidate = resp_json["candidates"][0]["content"]["parts"]
-                text_parts = []
-                for part in candidate:
-                    if "text" in part:
-                        text_parts.append(part["text"])
-                if not text_parts:
-                    raise RuntimeError("Gemini response did not contain any textual output.")
-                cleaned_text = "".join(text_parts).strip()
-                if cleaned_text.startswith("```json"):
-                    cleaned_text = cleaned_text[7:]
-                if cleaned_text.startswith("```"):
-                    cleaned_text = cleaned_text[3:]
-                if cleaned_text.endswith("```"):
-                    cleaned_text = cleaned_text[:-3]
-                parsed = json.loads(cleaned_text.strip())
-                return parsed
-        except Exception as e:
-            last_err = e
-            continue
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(
+                    url,
+                    data=req_data,
+                    headers={"Content-Type": "application/json"}
+                )
+                with urllib.request.urlopen(req, timeout=90) as resp:
+                    resp_json = json.loads(resp.read().decode("utf-8"))
+                    candidate = resp_json["candidates"][0]["content"]["parts"]
+                    text_parts = []
+                    for part in candidate:
+                        if "text" in part:
+                            text_parts.append(part["text"])
+                    if not text_parts:
+                        raise RuntimeError("Gemini response did not contain any textual output.")
+                    cleaned_text = "".join(text_parts).strip()
+                    if cleaned_text.startswith("```json"):
+                        cleaned_text = cleaned_text[7:]
+                    if cleaned_text.startswith("```"):
+                        cleaned_text = cleaned_text[3:]
+                    if cleaned_text.endswith("```"):
+                        cleaned_text = cleaned_text[:-3]
+                    return json.loads(cleaned_text.strip())
+            except urllib.error.HTTPError as exc:
+                response_body = exc.read().decode("utf-8", errors="replace")
+                last_err = f"HTTP {exc.code}: {response_body[:500]}"
+                if exc.code not in (429, 500, 502, 503, 504):
+                    break
+                if attempt < 2:
+                    time.sleep(2 ** attempt)
+            except (urllib.error.URLError, TimeoutError) as exc:
+                last_err = str(exc)
+                if attempt < 2:
+                    time.sleep(2 ** attempt)
+            except Exception as exc:
+                last_err = exc
+                break
 
     raise RuntimeError(f"Gemini API request failed across all available models. Last error: {last_err}")
 

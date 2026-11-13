@@ -38,7 +38,7 @@ Language exchange and learning platform featuring real-time chat, reciprocal mul
 - Kept expired listings in the admin panel for manual paid extensions, then automated cleanup with MongoDB TTL.
 - Selected for the Sarvam Startup Program; advanced to RideHack JIIT Round 2 for funding.
 - **impact:** Combined language exchange, real-time messaging, reciprocal matching, and LMS course monetization into a production platform.
-- **built with:** Next.js · Node.js · Express.js · Socket.IO · MongoDB · PostgreSQL · JWT · Sarvam AI · Google Cloud · Razorpay · Vercel · Render · GitHub Actions
+- **built with:** Next.js · Node.js · Express.js · Socket.IO · MongoDB · PostgreSQL · JWT · Sarvam AI · Razorpay · Vercel · Render · GitHub Actions
 
 ---
 
@@ -49,16 +49,16 @@ AI-powered publishing and e-commerce platform for a family publishing house with
 - Deployed a live storefront on Vercel with serverless APIs and MongoDB orders; verified Razorpay payments with HMAC-SHA256 and served 400+ visits.
 - Designed an Express admin API with JWT RBAC and polyglot persistence: PostgreSQL inventory and MongoDB orders; added staff-reviewed Gemini product entry.
 - **impact:** Transformed a traditional publishing business into an active digital storefront with cryptographic payment verification and an AI-assisted operational layer.
-- **built with:** React · Node.js · MongoDB · Supabase (PostgreSQL) · Razorpay · Gemini API · JWT · Nodemailer SMTP · Vercel · Render
+- **built with:** React · Node.js · MongoDB · Supabase (PostgreSQL) · Razorpay · Gemini API · JWT · Nodemailer SMTP · Vercel
 
 ---
 
 ### [thewittyswan Terminal](https://thewittyswan.space/terminal)
 
-Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab, all guarded against SSRF via strict host/IP validation on every outbound check.
+Go/xterm.js portfolio with a virtual filesystem and rate-limited network diagnostics; GitHub Actions runs Go checks and deploys main-branch changes to a GCP VM via SSH.
 
 - **impact:** A personal corner of the internet where writing and engineering don't have to live in separate rooms.
-- **built with:** Go · xterm.js · GCP Compute Engine · Caddy · systemd · GitHub Actions
+- **built with:** Go · xterm.js · GCP Compute Engine · GitHub Actions · Caddy · systemd
 
 ---
 
@@ -134,7 +134,7 @@ Two-way elective course matcher with priority-ranked preferences, real-time upda
 - **Databases:** MongoDB · PostgreSQL · Turso (LibSQL) · Supabase · Neon
 - **Authentication & Security:** JWT · OAuth 2.0 · Clerk · Firebase · HMAC-SHA256 · RBAC
 - **AI & Integrations:** Gemini API (Multimodal) · Payment Gateway (Razorpay) · RapidFuzz · Cloudinary · Groq API · Sarvam AI · Nodemailer SMTP
-- **CS Fundamentals:** Computer Networks · Operating Systems
+- **CS Fundamentals:** Computer Networks · Operating Systems · Object Oriented Programming
 - **DevOps & Cloud:** Docker · Git · Linux · Caddy · systemd · AWS (EC2) · GCP Compute Engine · Render · Shell Scripting · CI/CD · Vercel
 
 ---
