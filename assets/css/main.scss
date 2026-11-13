@@ -27,15 +27,13 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100vh;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -134,9 +132,7 @@ main {
   max-width: 760px;
   margin: 0 auto;
   padding: 1rem 1.5rem 5rem;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
+  flex: 1 0 auto;
   width: 100%;
 }
 
@@ -332,13 +328,23 @@ main li strong {
 
 /* Footer */
 .site-footer {
+  position: relative;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.88rem;
   flex: 0 0 auto;
-  padding: 3rem 1.5rem 2.5rem;
-  border-top: 1px solid var(--border);
+  padding: 1.5rem 1.5rem 1.25rem;
   margin-top: auto;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(760px, calc(100% - 3rem));
+  border-top: 1px solid var(--border);
+  transform: translateX(-50%);
 }
 
 .footer-links {
@@ -346,7 +352,11 @@ main li strong {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer p {
+  margin: 0.5rem 0;
 }
 
 .footer-links a {
@@ -366,7 +376,7 @@ main li strong {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.15rem;
-  margin-top: 0.75rem;
+  margin-top: 0.65rem;
 }
 
 .footer-signature a {
