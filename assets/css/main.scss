@@ -171,17 +171,17 @@ main {
 }
 
 body.page-transitioning > :not(.page-transition) {
-  animation: page-shift 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation: page-shift 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
   transform-origin: center;
   will-change: transform, filter, opacity;
 }
 
 .page-transitioning .page-transition img {
-  animation: swan-flight 2s cubic-bezier(0.45, 0, 0.2, 1) both;
+  animation: swan-flight 1.4s cubic-bezier(0.45, 0, 0.2, 1) both;
 }
 
 .page-transitioning .page-transition::before {
-  animation: transition-wash 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation: transition-wash 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 
 @keyframes swan-flight {
