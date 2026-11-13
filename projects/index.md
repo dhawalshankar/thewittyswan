@@ -133,9 +133,9 @@ Two-way elective course matcher with priority-ranked preferences, real-time upda
 - **Backend & APIs:** Node.js · Express.js · FastAPI · Flask · REST APIs · WebSocket · CRON Jobs · Microservices
 - **Databases:** MongoDB · PostgreSQL · Turso (LibSQL) · Supabase · Neon
 - **Authentication & Security:** JWT · OAuth 2.0 · Clerk · Firebase · HMAC-SHA256 · RBAC
-- **AI & Integrations:** Gemini API (Multimodal) · Payment Gateway (Razorpay) · RapidFuzz · Cloudinary · Groq API · Sarvam AI · Nodemailer SMTP
+- **AI & Integrations:** Gemini API (Multimodal) · Payment Gateway · RapidFuzz · Cloudinary · Groq API · Sarvam AI · Nodemailer SMTP
 - **CS Fundamentals:** Computer Networks · Operating Systems · Object Oriented Programming
-- **DevOps & Cloud:** Docker · Git · Linux · Caddy · systemd · AWS (EC2) · GCP Compute Engine · Render · Shell Scripting · CI/CD · Vercel
+- **DevOps & Cloud:** Docker · Git · Linux · Caddy · systemd · AWS (EC2) · GCP Compute Engine · Render · Shell Scripting · CI/CD · Vercel · GitHub Actions
 
 ---
 

@@ -2,9 +2,9 @@
   "meta": {
     "website": "https://thewittyswan.space",
     "terminal": "https://thewittyswan.space/terminal",
-    "portfolio_version": "1.4",
+    "portfolio_version": "1.5",
     "last_updated": "2026-11-13",
-    "resume_version": "2026.11"
+    "resume_version": "2026.11.1"
   },
   "profile": {
     "name": "Dhawal Shukla",
@@ -308,7 +308,6 @@
     "RBAC",
     "Gemini API (Multimodal)",
     "Payment Gateway",
-    "Razorpay",
     "RapidFuzz",
     "Cloudinary",
     "Groq API",
@@ -327,7 +326,8 @@
     "Render",
     "Shell Scripting",
     "CI/CD",
-    "Vercel"
+    "Vercel",
+    "GitHub Actions"
   ],
   "skills_by_category": {
     "languages": [
@@ -364,7 +364,7 @@
     ],
     "ai_and_integrations": [
       "Gemini API (Multimodal)",
-      "Payment Gateway (Razorpay)",
+      "Payment Gateway",
       "RapidFuzz",
       "Cloudinary",
       "Groq API",
@@ -387,7 +387,8 @@
       "Render",
       "Shell Scripting",
       "CI/CD",
-      "Vercel"
+      "Vercel",
+      "GitHub Actions"
     ]
   },
   "timeline": [
@@ -441,7 +442,7 @@
     },
     {
       "date": "2026",
-      "event": "Built thewittyswan Terminal — self-hosted Go + xterm.js developer terminal with live network security lab on GCP."
+      "event": "Built thewittyswan Terminal – self-hosted Go + xterm.js developer terminal with live network security lab on GCP."
     }
   ],
   "achievements": [
