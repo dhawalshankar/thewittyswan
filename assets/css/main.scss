@@ -33,6 +33,9 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -63,6 +66,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  flex: 0 0 auto;
   row-gap: 1rem;
   padding: 2.25rem 1.5rem 1.75rem;
   max-width: 960px;
@@ -131,6 +135,8 @@ main {
   margin: 0 auto;
   padding: 1rem 1.5rem 5rem;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   width: 100%;
 }
 
@@ -329,6 +335,7 @@ main li strong {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.88rem;
+  flex: 0 0 auto;
   padding: 3rem 1.5rem 2.5rem;
   border-top: 1px solid var(--border);
   margin-top: auto;
