@@ -126,6 +126,8 @@ GitHub repository directly; it reads only the public generated feeds.
 | `admin/config.yml` | Decap CMS collections and media configuration |
 | `posts.json` | Public feed consumed by the terminal |
 | `portfolio.json` | Structured profile, projects, skills, and resume metadata |
+| `scripts/sync_resume.py` | Automated sync script parsing Drive resume PDF via Gemini API |
+| `.github/workflows/` | Monthly automated resume sync GitHub Action |
 | `assets/css/main.scss` | Site-wide styling |
 
 ## Security and operations

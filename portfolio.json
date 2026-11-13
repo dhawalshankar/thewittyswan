@@ -128,7 +128,8 @@
         "Cloudinary"
       ],
       "link": "https://golab.golangforall.in",
-      "github": ""
+      "github": "",
+      "impact": "Created a live, publicly accessible sandboxed Go execution environment engineered for hostile workloads."
     },
     {
       "name": "VartaLang - Language Exchange and LMS",
@@ -155,7 +156,8 @@
         "Render"
       ],
       "link": "https://vartalang.in",
-      "github": ""
+      "github": "",
+      "impact": "Combined language exchange, real-time messaging, reciprocal matching, and LMS course monetization into a production platform."
     },
     {
       "name": "Cosmo India Prakashan - E-Commerce and AI Inventory Platform",
@@ -177,7 +179,8 @@
         "Render"
       ],
       "link": "https://cosmoindiaprakashan.in",
-      "github": ""
+      "github": "",
+      "impact": "Transformed a traditional publishing business into an active digital storefront with cryptographic payment verification and an AI-assisted operational layer."
     },
     {
       "name": "thewittyswan Terminal",
@@ -191,7 +194,8 @@
         "OSV.dev API"
       ],
       "link": "https://thewittyswan.space/terminal",
-      "github": ""
+      "github": "",
+      "impact": "A personal corner of the internet where writing and engineering don't have to live in separate rooms."
     },
     {
       "name": "GolangForAll",
@@ -208,7 +212,8 @@
         "systemd"
       ],
       "link": "https://golangforall.in",
-      "github": ""
+      "github": "",
+      "impact": "Connected learning, writing, and hands-on coding for a growing Go developer community."
     },
     {
       "name": "Cape Comorin School Records",
@@ -227,7 +232,8 @@
         "WeasyPrint"
       ],
       "link": "https://capecomorinschool.com",
-      "github": ""
+      "github": "",
+      "impact": "Converted decades of paper archives into an instantaneous, searchable digital workflow for school administrators."
     },
     {
       "name": "Churn",
@@ -241,7 +247,8 @@
         "CLI"
       ],
       "link": "https://pypi.org/project/churn-cli/",
-      "github": ""
+      "github": "",
+      "impact": "Brought LLM repository analysis into native command-line developer workflows."
     },
     {
       "name": "AuralAce",
@@ -256,7 +263,8 @@
         "Web Audio API"
       ],
       "link": "https://auralace.vercel.app",
-      "github": ""
+      "github": "",
+      "impact": "Turned abstract audio-processing operations into an interactive experiment that can be heard rather than merely described."
     },
     {
       "name": "ElectiveXchange",
@@ -461,7 +469,7 @@
     },
     {
       "title": "LeetCode",
-      "description": "Peak rating of 1617 and earned the 50 Days Badge.",
+      "description": "Peak contest rating of 1713 and earned the 50 Days Badge.",
       "year": "2026"
     }
   ]
