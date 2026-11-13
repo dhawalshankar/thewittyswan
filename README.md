@@ -99,7 +99,7 @@ backend mode, no OAuth needed for local testing.
   or directly as Markdown
 - `home/`, `about/` (→ `/now/`), `projects/`, `glossary/`, `recommends/`
   — structural pages, editable via `/admin`
-- `index.md` — the landing fork ("I'm a dev" / "I'm a homo sapien"),
+- `index.md` — the landing fork ("I'm a developer" / "I'm a homo sapien"),
   intentionally **not** editable via the CMS
 - `posts.json` — auto-generated feed of all posts, consumed by the
   terminal repo for its `ls`/`cat`/`grep` commands
