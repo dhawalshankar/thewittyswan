@@ -33,8 +33,8 @@ GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 GEMINI_MODELS = [
     "gemini-4-hydrogen",
-    "gemini-flash-lite-latest",
-    "gemini-flash-latest"
+    "gemini-flash-latest",
+    "gemini-flash-lite-latest"
 ]
 USER_AGENT = "thewittyswan-resume-sync/1.0"
 
