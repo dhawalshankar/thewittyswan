@@ -4,8 +4,8 @@ sync_resume.py
 Automated synchronization script that:
 1. Downloads the latest resume PDF from Google Drive.
 2. Checks SHA-256 hash against .resume_hash to detect actual changes.
-3. If changed (or --force), extracts the resume text and sends it to Groq
-   together with the current portfolio.json.
+3. If changed (or --force), extracts resume text and updates the portfolio
+   with Groq, falling back to Gemini if Groq fails.
 4. Generates updated portfolio.json and syncs projects/index.md.
 5. Updates .resume_hash so future runs skip when unchanged.
 """
@@ -31,6 +31,7 @@ PORTFOLIO_FILE = "portfolio.json"
 PROJECTS_FILE = os.path.join("projects", "index.md")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+GEMINI_MODELS = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 USER_AGENT = "thewittyswan-resume-sync/1.0"
 
 def compute_sha256(data: bytes) -> str:
@@ -83,9 +84,7 @@ def extract_resume_text(pdf_bytes: bytes) -> str:
     return text
 
 
-def call_groq_with_resume(api_key: str, pdf_bytes: bytes, current_portfolio: dict) -> dict:
-    """Send extracted resume text and portfolio JSON to Groq's chat API."""
-    resume_text = extract_resume_text(pdf_bytes)
+def build_portfolio_prompt(resume_text: str, current_portfolio: dict) -> str:
     current_json_str = json.dumps(current_portfolio, indent=2)
     today_str = datetime.now().strftime("%Y-%m-%d")
 
@@ -133,7 +132,12 @@ RESUME TEXT:
 CURRENT PORTFOLIO.JSON:
 {current_json_str}
 """
+    return prompt
 
+
+def call_groq_with_resume(api_key: str, resume_text: str, current_portfolio: dict) -> dict:
+    """Send extracted resume text and portfolio JSON to Groq's chat API."""
+    prompt = build_portfolio_prompt(resume_text, current_portfolio)
     payload = {
         "model": GROQ_MODEL,
         "messages": [
@@ -183,6 +187,92 @@ CURRENT PORTFOLIO.JSON:
             break
 
     raise RuntimeError(f"Groq API request failed after retries. Last error: {last_err}")
+
+
+def call_gemini_with_resume(api_key: str, resume_text: str, current_portfolio: dict) -> dict:
+    """Send extracted resume text and portfolio JSON to Gemini as a fallback."""
+    prompt = build_portfolio_prompt(resume_text, current_portfolio)
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "temperature": 0.1
+        }
+    }
+    req_data = json.dumps(payload).encode("utf-8")
+    last_err = None
+
+    for model in GEMINI_MODELS:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        for attempt in range(2):
+            try:
+                req = urllib.request.Request(
+                    url,
+                    data=req_data,
+                    headers={
+                        "Content-Type": "application/json",
+                        "User-Agent": USER_AGENT
+                    }
+                )
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    resp_json = json.loads(resp.read().decode("utf-8"))
+                parts = resp_json["candidates"][0]["content"]["parts"]
+                content = "".join(part.get("text", "") for part in parts).strip()
+                if not content:
+                    raise RuntimeError("Gemini response did not contain any textual output.")
+                result = json.loads(content)
+                if not isinstance(result, dict):
+                    raise RuntimeError("Gemini response was valid JSON but not a JSON object.")
+                return result
+            except urllib.error.HTTPError as exc:
+                response_body = exc.read().decode("utf-8", errors="replace")
+                last_err = f"HTTP {exc.code}: {response_body[:500]}"
+                if exc.code not in (429, 500, 502, 503, 504):
+                    break
+                if attempt < 1:
+                    time.sleep(2 ** attempt)
+            except (urllib.error.URLError, TimeoutError) as exc:
+                last_err = str(exc)
+                if attempt < 1:
+                    time.sleep(2 ** attempt)
+            except Exception as exc:
+                last_err = exc
+                break
+
+    raise RuntimeError(f"Gemini API request failed after retries. Last error: {last_err}")
+
+
+def update_portfolio_with_fallback(
+    pdf_bytes: bytes,
+    current_portfolio: dict,
+    groq_api_key: str | None,
+    gemini_api_key: str | None
+) -> dict:
+    """Try Groq first, then Gemini when configured and Groq fails."""
+    if not groq_api_key and not gemini_api_key:
+        raise RuntimeError("Set GROQ_API_KEY, GEMINI_API_KEY, or both to update the portfolio.")
+
+    resume_text = extract_resume_text(pdf_bytes)
+    errors = []
+
+    if groq_api_key:
+        try:
+            return call_groq_with_resume(groq_api_key, resume_text, current_portfolio)
+        except RuntimeError as exc:
+            errors.append(f"Groq: {exc}")
+            if gemini_api_key:
+                print(f"Groq failed ({exc}); trying Gemini fallback.", file=sys.stderr)
+
+    if gemini_api_key:
+        try:
+            if not groq_api_key:
+                print("GROQ_API_KEY is not set; using Gemini.", file=sys.stderr)
+            return call_gemini_with_resume(gemini_api_key, resume_text, current_portfolio)
+        except RuntimeError as exc:
+            errors.append(f"Gemini: {exc}")
+
+    raise RuntimeError("All configured AI providers failed. " + " | ".join(errors))
+
 
 def render_projects_markdown(portfolio: dict) -> str:
     """Deterministically render projects/index.md from portfolio.json data."""
@@ -321,9 +411,10 @@ def main():
         print("Render complete!")
         return
 
-    api_key = os.getenv("GROQ_API_KEY")
-    if not api_key:
-        print("ERROR: GROQ_API_KEY environment variable is required.", file=sys.stderr)
+    groq_api_key = os.getenv("GROQ_API_KEY")
+    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    if not groq_api_key and not gemini_api_key:
+        print("ERROR: Set GROQ_API_KEY, GEMINI_API_KEY, or both.", file=sys.stderr)
         sys.exit(1)
 
     print(f"Checking Google Drive for resume file ID: {args.file_id}...")
@@ -340,11 +431,21 @@ def main():
         print("No changes detected in resume PDF since last sync. Portfolio is up to date!")
         return
 
-    print(f"Resume update detected (or --force). Updating portfolio using Groq ({GROQ_MODEL})...")
+    providers = []
+    if groq_api_key:
+        providers.append(f"Groq ({GROQ_MODEL})")
+    if gemini_api_key:
+        providers.append("Gemini fallback")
+    print(f"Resume update detected (or --force). Updating portfolio using {' then '.join(providers)}...")
     with open(PORTFOLIO_FILE, "r", encoding="utf-8") as f:
         current_portfolio = json.load(f)
 
-    updated_portfolio = call_groq_with_resume(api_key, pdf_bytes, current_portfolio)
+    updated_portfolio = update_portfolio_with_fallback(
+        pdf_bytes,
+        current_portfolio,
+        groq_api_key,
+        gemini_api_key
+    )
     
     # Save updated portfolio.json
     with open(PORTFOLIO_FILE, "w", encoding="utf-8") as f:
