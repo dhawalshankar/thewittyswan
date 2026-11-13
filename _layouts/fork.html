@@ -8,8 +8,8 @@
   <link rel="icon" href="{{ "/assets/img/thewittyswan.png" | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-      <!-- Google tag (gtag.js) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9R29BB2ZZV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,16 +23,24 @@
 </head>
 <body class="fork-body">
   <div class="fork-logo">
-    <img src="{{ "/assets/img/thewittyswan.png" | relative_url }}" alt="thewittyswan">
+    <a href="{{ "/" | relative_url }}" title="thewittyswan">
+      <img src="{{ "/assets/img/thewittyswan.png" | relative_url }}" alt="thewittyswan">
+    </a>
   </div>
   <div class="split-screen">
     <a class="split-half split-dev" href="/terminal">
       <span class="split-blur"></span>
-      <span class="split-label">I'm a dev</span>
+      <div class="split-content">
+        <span class="split-label">I'm a dev</span>
+        <span class="split-sub">interactive terminal · systems · security</span>
+      </div>
     </a>
     <a class="split-half split-human" href="/home/">
       <span class="split-blur"></span>
-      <span class="split-label">I'm a homo sapien</span>
+      <div class="split-content">
+        <span class="split-label">I'm a homo sapien</span>
+        <span class="split-sub">notes · literature · quiet thoughts</span>
+      </div>
     </a>
   </div>
 </body>

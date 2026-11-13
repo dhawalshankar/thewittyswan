@@ -2,54 +2,59 @@
   "meta": {
     "website": "https://thewittyswan.space",
     "terminal": "https://thewittyswan.space/terminal",
-    "portfolio_version": "1.1",
-    "last_updated": "2026-08-02",
-    "resume_version": "2026.1"
+    "portfolio_version": "1.2",
+    "last_updated": "2026-11-13",
+    "resume_version": "2026.2"
   },
   "profile": {
     "name": "Dhawal Shukla",
+    "title": "Backend Software Engineer",
     "tagline": [
       "Backend Engineering",
-      "Network Security",
-      "Cloud"
+      "Go & Distributed Systems",
+      "Cloud Infrastructure"
     ],
     "education_short": "B.Tech, Electronics & Communication Engineering • JIIT Noida (2023–2027)",
     "location": "Kanpur, Uttar Pradesh, India",
-    "summary": "Backend engineer building secure backend systems, cloud-native applications and developer tooling. Experienced with Node.js, Python, Go, REST APIs, WebSockets, JWT/OAuth 2.0, Docker, MongoDB, PostgreSQL and AI integrations. Passionate about backend infrastructure, system design and continuously advancing towards Network Security engineering."
+    "summary": "Backend Software Engineer focused on Go, Node.js and Python. My projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. I also founded GolangForAll to share Go learning resources and bring developers together."
   },
   "contact": {
     "email": "dhawalmannu@gmail.com",
-    "phone": "+91 7376521772",
+    "phone": "+91 737 652 1772",
     "location": "Kanpur, Uttar Pradesh, India"
   },
   "profiles": {
     "github": {
-      "username": "DhawalShankar",
-      "url": "https://github.com/DhawalShankar"
+      "username": "dhawalshankar",
+      "url": "https://github.com/dhawalshankar"
     },
     "linkedin": {
       "username": "dhawalshukl",
-      "url": "https://www.linkedin.com/in/dhawalshukl/"
+      "url": "https://linkedin.com/in/dhawalshukl"
     },
     "leetcode": {
       "username": "dhawalshankar",
-      "url": "https://leetcode.com/u/dhawalshankar/"
+      "url": "https://leetcode.com/u/dhawalshankar"
+    },
+    "portfolio": {
+      "username": "dhawalshankar",
+      "url": "https://dhawalshankar.github.io"
     }
   },
   "resume": {
-    "summary": "Backend engineer specialising in Node.js, Python and Go ecosystems with experience shipping production platforms: real-time messaging, payment processing, polyglot database architectures and AI-driven data pipelines. Skilled in secure backend architecture using JWT, OAuth 2.0, RBAC, MongoDB, PostgreSQL, Docker and self-hosted Linux/cloud infrastructure.",
+    "summary": "Backend Software Engineer focused on Go, Node.js and Python. Projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. Founder of GolangForAll developer community.",
     "pdf_url": "https://drive.google.com/file/d/1zodZ1AqMNmWbzGSzmJerYLQGAHMEUwTa/view?usp=sharing"
   },
   "education": [
     {
       "degree": "B.Tech in Electronics & Communication Engineering",
-      "institute": "Jaypee Institute of Information Technology, Noida",
+      "institute": "Jaypee Institute of Information Technology – Noida",
       "duration": "2023 – 2027",
-      "details": "CGPA: 7.37 / 10"
+      "details": "7.37 CGPA"
     },
     {
-      "degree": "ISC (Class XII)",
-      "institute": "Council for the Indian School Certificate Examinations",
+      "degree": "12th (CISCE Board)",
+      "institute": "The Chintels School",
       "duration": "2023",
       "details": "92.25%"
     }
@@ -58,17 +63,122 @@
     {
       "role": "IT Operations Support Intern",
       "company": "Cape Comorin Children School",
+      "location": "Kanpur (Hybrid)",
       "duration": "Jun 2026 – Jul 2026",
-      "description": "Engineered capecomorinschool.com using Next.js and Flask, integrating Vritukul (a FastAPI service with a Gemini multimodal pipeline), reducing student and admission record lookup time from hours to 30 seconds using RapidFuzz fuzzy name matching. Implemented Firebase JWT authentication and RBAC across admin panels used by 10+ school staff, with data storage across Turso, Neon PostgreSQL and Cloudinary."
+      "description": "Delivered a deployed Next.js demo with separately deployed Flask school and FastAPI Vritukul microservices; used Gemini to extract 100+ handwritten records and RapidFuzz-ranked search for about 30-second lookup. Implemented Firebase-verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary. Created calendar-grounded, staff-reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated Cape Comorin frontend merges on GitHub Actions lint, TypeScript checks and production builds.",
+      "highlights": [
+        "Delivered a deployed Next.js demo with separately deployed Flask school and FastAPI Vritukul microservices; used Gemini to extract 100+ handwritten records and RapidFuzz-ranked search for about 30-second lookup.",
+        "Implemented Firebase-verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary.",
+        "Created calendar-grounded, staff-reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated Cape Comorin frontend merges on GitHub Actions lint, TypeScript checks and production builds."
+      ],
+      "stack": [
+        "Next.js",
+        "Flask",
+        "FastAPI",
+        "Gemini API",
+        "Groq (Llama API)",
+        "RapidFuzz",
+        "Firebase Auth",
+        "Turso",
+        "Neon PostgreSQL",
+        "Cloudinary",
+        "WeasyPrint",
+        "GitHub Actions"
+      ]
     },
     {
       "role": "Backend Developer Intern",
       "company": "Codingo Forge",
+      "location": "Noida (Remote)",
       "duration": "Apr 2026 – Jun 2026",
-      "description": "Collaborated with a 3-engineer backend team to containerize services with Docker and configure Clerk authentication with RBAC for employees, users and a super admin role. Designed and implemented REST APIs using Node.js and Express.js, backed by MongoDB."
+      "description": "Dockerized backend services with a 3-engineer team, resolving environment and dependency-version mismatches; configured Clerk RBAC for employees, users, and super-admins in place of shared credentials. Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local-business digital-storefront workflows.",
+      "highlights": [
+        "Dockerized backend services with a 3-engineer team, resolving environment and dependency-version mismatches; configured Clerk RBAC for employees, users, and super-admins in place of shared credentials.",
+        "Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local-business digital-storefront workflows."
+      ],
+      "stack": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Clerk Auth",
+        "RBAC",
+        "Docker",
+        "REST APIs"
+      ]
     }
   ],
   "projects": [
+    {
+      "name": "GoLab - Sandboxed Go Code Execution Playground",
+      "description": "Browser-to-container code execution playground for GolangForAll. Isolated compilation and execution in separate Docker containers with no network, non-root users, resource limits, and cached builds.",
+      "highlights": [
+        "Launched GoLab for 60+ users in GolangForAll’s 80+ member WhatsApp community: Next.js/Monaco frontend, Go runner on AWS EC2.",
+        "Isolated compilation and execution in separate Docker containers with no network, non-root users and resource limits.",
+        "Used read-only container root filesystems and cached compiler builds; mounted the runtime workspace read-only.",
+        "Created GolangForAll’s Docusaurus platform for 200+ users with Go APIs, Neon PostgreSQL and Cloudinary."
+      ],
+      "stack": [
+        "Next.js",
+        "Monaco",
+        "Go",
+        "Docker",
+        "AWS EC2",
+        "Docusaurus",
+        "PostgreSQL",
+        "Cloudinary"
+      ],
+      "link": "https://golab.golangforall.in",
+      "github": ""
+    },
+    {
+      "name": "VartaLang - Language Exchange and LMS",
+      "description": "Language exchange and learning platform featuring real-time chat, reciprocal multilingual matching across 33 languages, LMS with Razorpay payment processing, and Sarvam AI Indic translation & TTS integrations.",
+      "highlights": [
+        "Engineered VartaLang microservices with Node.js/Express, MongoDB and Socket.IO for reciprocal matching and real-time chat; deployed at api.vartalang.in with GitHub Actions checks. Reached 60+ sign-ups and 500+ visitors.",
+        "Launched learn.vartalang.in with freemium courses in 33 languages, instructor onboarding, sales reports and live Razorpay; implemented SSO between VartaLang and the LMS, with shared MongoDB user accounts and LMS data in Neon PostgreSQL.",
+        "Added Sarvam Translate and Google Cloud translation APIs for Indic and foreign-language chat, plus Sarvam Bulbul TTS, read receipts, blocking, reporting and per-user soft deletion.",
+        "Marked 7-day job listings as expired with node-cron; public queries also check the expiry date.",
+        "Kept expired listings in the admin panel for manual paid extensions, then automated cleanup with MongoDB TTL.",
+        "Selected for the Sarvam Startup Program; advanced to RideHack JIIT Round 2 for funding."
+      ],
+      "stack": [
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "Socket.IO",
+        "MongoDB",
+        "PostgreSQL",
+        "JWT",
+        "Sarvam AI",
+        "Razorpay",
+        "Vercel",
+        "Render"
+      ],
+      "link": "https://vartalang.in",
+      "github": ""
+    },
+    {
+      "name": "Cosmo India Prakashan - E-Commerce and AI Inventory Platform",
+      "description": "AI-powered publishing and e-commerce platform for a family publishing house with polyglot persistence, cryptographic Razorpay payment verification, and staff-reviewed Gemini product catalog workflows.",
+      "highlights": [
+        "Deployed a live storefront on Vercel with serverless APIs and MongoDB orders; verified Razorpay payments with HMAC-SHA256 and served 400+ visits.",
+        "Designed an Express admin API with JWT RBAC and polyglot persistence: PostgreSQL inventory and MongoDB orders; added staff-reviewed Gemini product entry."
+      ],
+      "stack": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Supabase (PostgreSQL)",
+        "Razorpay",
+        "Gemini API",
+        "JWT",
+        "Nodemailer SMTP",
+        "Vercel",
+        "Render"
+      ],
+      "link": "https://cosmoindiaprakashan.in",
+      "github": ""
+    },
     {
       "name": "thewittyswan Terminal",
       "description": "Self-hosted, browser-based developer terminal built with a Go backend and xterm.js frontend, running on a GCP e2-micro VM behind a Caddy reverse proxy under systemd. Includes a live network security lab (TLS inspection, DNS diagnostics, HTTP security header auditing, port reachability checks, and OSV.dev-backed dependency vulnerability lookups), all guarded against SSRF via strict host/IP validation on every outbound check.",
@@ -84,72 +194,73 @@
       "github": ""
     },
     {
-      "name": "VartaLang",
-      "description": "Language Exchange to Career Platform featuring real-time messaging, Google OAuth, JWT authentication, room-based Socket.io communication, CRON automation and multilingual matching.",
+      "name": "GolangForAll",
+      "description": "Community and learning platform for Go developers with authenticated technical writing, community updates, and interactive sandbox integration for 200+ users.",
       "stack": [
-        "Next.js",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Socket.io",
-        "JWT",
-        "OAuth 2.0",
-        "Render"
-      ],
-      "link": "https://vartalang.in",
-      "github": ""
-    },
-    {
-      "name": "Cosmo India Prakashan",
-      "description": "AI-powered publishing and e-commerce platform for my family's publishing house. Built secure payments with Razorpay + HMAC-SHA256, MongoDB + PostgreSQL architecture, AI inventory management and RBAC administration. This was my first production backend project and marked the beginning of my backend engineering journey in 2025.",
-      "stack": [
+        "Go",
         "React",
-        "TypeScript",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Supabase",
+        "Docusaurus",
         "PostgreSQL",
-        "JWT",
-        "Gemini API",
-        "Razorpay",
-        "Render",
-        "Vercel"
+        "Cloudinary",
+        "Docker",
+        "AWS",
+        "Caddy",
+        "systemd"
       ],
-      "link": "https://cosmoindiaprakashan.in",
+      "link": "https://golangforall.in",
       "github": ""
     },
     {
-      "name": "Cape Comorin School ERP",
-      "description": "Digitisation platform modernising a school established in 1984. Includes AI-powered OCR, student records management, notices, teacher portal, fee management and administration dashboard.",
+      "name": "Cape Comorin School Records",
+      "description": "Digitisation platform modernising school records. Multimodal Gemini OCR for 100+ handwritten records, RapidFuzz-ranked search for ~30s lookup, Firebase auth and RBAC for 10+ staff, and calendar-grounded AI notice generation with Groq Llama and WeasyPrint.",
       "stack": [
         "Next.js",
         "Flask",
         "FastAPI",
         "Gemini API",
+        "Groq (Llama API)",
         "RapidFuzz",
         "Neon PostgreSQL",
         "Turso",
         "Firebase",
-        "Cloudinary"
+        "Cloudinary",
+        "WeasyPrint"
       ],
       "link": "https://capecomorinschool.com",
       "github": ""
     },
     {
       "name": "Churn",
-      "description": "CLI tool (published on PyPI as churn-cli) that mines git log history for high-churn files and uses the Gemini API to auto-generate leveled interview Q&A in Markdown or JSON, with configurable scope. Averaging 300 downloads/month.",
+      "description": "CLI published on PyPI (churn-cli) for interview prep, automated documentation generation, and repo health scoring across local and GitHub repositories using Gemini, Groq, and OpenAI models. 144 downloads/month.",
       "stack": [
         "Python",
         "Gemini API",
-        "PyPI"
+        "Groq API",
+        "OpenAI API",
+        "PyPI",
+        "CLI"
       ],
       "link": "https://pypi.org/project/churn-cli/",
       "github": ""
     },
     {
+      "name": "AuralAce",
+      "description": "Audio signal processing platform implementing FFT equalisation, convolution reverb, waveform visualisation and interactive before-and-after playback.",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "NumPy",
+        "SciPy",
+        "librosa",
+        "Next.js",
+        "Web Audio API"
+      ],
+      "link": "https://auralace.vercel.app",
+      "github": ""
+    },
+    {
       "name": "ElectiveXchange",
-      "description": "Identified a recurring problem with classmates struggling to swap electives each semester and independently built a two-way matcher with priority-ranked preferences and real-time updates. Grew to 300+ organic signups.",
+      "description": "Two-way elective course matcher with priority-ranked preferences, real-time updates, and Firebase authentication. 300+ organic signups.",
       "stack": [
         "React",
         "Tailwind CSS",
@@ -159,139 +270,199 @@
       ],
       "link": "",
       "github": ""
-    },
-    {
-      "name": "AuralAce",
-      "description": "Audio signal processing platform implementing FFT equalisation, convolution reverb, waveform visualisation and FastAPI-powered audio processing.",
-      "stack": [
-        "Python",
-        "FastAPI",
-        "NumPy",
-        "SciPy",
-        "librosa",
-        "Next.js"
-      ],
-      "link": "https://auralace.vercel.app",
-      "github": ""
     }
   ],
   "skills": [
+    "Python",
+    "Java",
+    "SQL",
+    "JavaScript",
+    "Go",
     "Node.js",
     "Express.js",
-    "Python",
-    "Go",
     "FastAPI",
-    "Django",
-    "Java",
-    "JavaScript",
-    "TypeScript",
+    "Flask",
     "REST APIs",
-    "System Design",
-    "WebSockets (Socket.io)",
+    "WebSocket",
     "CRON Jobs",
     "Microservices",
     "MongoDB",
     "PostgreSQL",
+    "Turso (LibSQL)",
     "Supabase",
     "Neon",
-    "Turso (LibSQL)",
-    "Firebase",
     "JWT",
     "OAuth 2.0",
-    "RBAC",
     "Clerk",
+    "Firebase",
     "HMAC-SHA256",
+    "RBAC",
+    "Gemini API (Multimodal)",
+    "Payment Gateway",
+    "Razorpay",
+    "RapidFuzz",
+    "Cloudinary",
+    "Groq API",
+    "Sarvam AI",
+    "Nodemailer SMTP",
+    "Computer Networks",
+    "Operating Systems",
     "Docker",
     "Git",
-    "GitHub",
     "Linux",
     "Caddy",
     "systemd",
+    "AWS (EC2)",
     "GCP Compute Engine",
     "Render",
-    "Vercel",
+    "Shell Scripting",
     "CI/CD",
-    "Gemini API",
-    "RapidFuzz",
-    "Cloudinary",
-    "Razorpay",
-    "Nodemailer",
-    "Postman"
+    "Vercel"
   ],
+  "skills_by_category": {
+    "languages": [
+      "Python",
+      "Java",
+      "SQL",
+      "JavaScript",
+      "Go"
+    ],
+    "backend_and_apis": [
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "Flask",
+      "REST APIs",
+      "WebSocket",
+      "CRON Jobs",
+      "Microservices"
+    ],
+    "databases": [
+      "MongoDB",
+      "PostgreSQL",
+      "Turso (LibSQL)",
+      "Supabase",
+      "Neon"
+    ],
+    "authentication_and_security": [
+      "JWT",
+      "OAuth 2.0",
+      "Clerk",
+      "Firebase",
+      "HMAC-SHA256",
+      "RBAC"
+    ],
+    "ai_and_integrations": [
+      "Gemini API (Multimodal)",
+      "Payment Gateway (Razorpay)",
+      "RapidFuzz",
+      "Cloudinary",
+      "Groq API",
+      "Sarvam AI",
+      "Nodemailer SMTP"
+    ],
+    "cs_fundamentals": [
+      "Computer Networks",
+      "Operating Systems"
+    ],
+    "devops_and_cloud": [
+      "Docker",
+      "Git",
+      "Linux",
+      "Caddy",
+      "systemd",
+      "AWS (EC2)",
+      "GCP Compute Engine",
+      "Render",
+      "Shell Scripting",
+      "CI/CD",
+      "Vercel"
+    ]
+  },
   "timeline": [
+    {
+      "date": "2023",
+      "event": "Completed 12th at The Chintels School (92.25%, CISCE Board)."
+    },
     {
       "date": "2023",
       "event": "Started B.Tech in Electronics & Communication Engineering at JIIT Noida."
     },
     {
       "date": "2024",
-      "event": "Earned UAV Pilot Certification from C-DAC Noida."
+      "event": "Earned UAV Pilot Certification from C-DAC Noida (ArduPilot/Pixhawk flight control & DGCA drone rules)."
     },
     {
       "date": "2025",
-      "event": "Started learning Backend Engineering."
-    },
-    {
-      "date": "2025",
-      "event": "Launched Cosmo India Prakashan, the first production platform for my family's publishing house."
+      "event": "Launched Cosmo India Prakashan, e-commerce and AI inventory platform for family publishing house."
     },
     {
       "date": "2026",
-      "event": "Built ElectiveXchange, growing to 300+ organic signups."
+      "event": "Joined Codingo Forge as Backend Developer Intern (Docker, Clerk RBAC, Express REST APIs)."
     },
     {
       "date": "2026",
-      "event": "Published Churn (churn-cli) on PyPI."
+      "event": "Joined Cape Comorin Children School as IT Operations Support Intern (Next.js, Flask, FastAPI microservices, Gemini OCR, RapidFuzz)."
     },
     {
       "date": "2026",
-      "event": "Joined Codingo Forge as Backend Developer Intern."
+      "event": "Built VartaLang language exchange platform and LMS; selected for Sarvam Startup Program and RideHack JIIT Round 2."
     },
     {
       "date": "2026",
-      "event": "Joined Cape Comorin Children School as IT Operations Support Intern."
+      "event": "Founded GolangForAll community and launched GoLab sandboxed Go code execution playground on AWS EC2."
     },
     {
       "date": "2026",
-      "event": "Built VartaLang language exchange platform."
+      "event": "Selected among top 300 of 19,000+ nationwide applicants for Adobe Education Summit at Noida HQ."
     },
     {
       "date": "2026",
-      "event": "Built thewittyswan Terminal — self-hosted Go + xterm.js developer terminal with a live network security lab."
+      "event": "Google BigCode: Ranked in the top 1,500 globally."
     },
     {
       "date": "2026",
-      "event": "Google BigCode Top 1500."
+      "event": "HirePro HackVega 2.0: Round 3 Finalist."
     },
     {
       "date": "2026",
-      "event": "HackVega 2.0 Finalist."
+      "event": "Published Churn (churn-cli) on PyPI (144 downloads/month)."
     },
     {
       "date": "2026",
-      "event": "Reached a peak LeetCode rating of 1617."
+      "event": "Built thewittyswan Terminal — self-hosted Go + xterm.js developer terminal with live network security lab on GCP."
     }
   ],
   "achievements": [
     {
       "title": "Google BigCode",
-      "description": "Ranked among the Top 1500 participants globally.",
+      "description": "Ranked in the top 1,500 globally (2026).",
       "year": "2026"
     },
     {
-      "title": "HackVega 2.0",
-      "description": "Reached the Final Round (Round 3).",
+      "title": "HirePro HackVega 2.0",
+      "description": "Round 3 Finalist (2026).",
       "year": "2026"
+    },
+    {
+      "title": "Adobe Education Summit",
+      "description": "Selected among the top 300 of 19,000+ nationwide applicants for Adobe’s Education Summit at its Noida HQ, focused on Adobe Firefly and developer communities.",
+      "year": "2026"
+    },
+    {
+      "title": "Churn (PyPI)",
+      "description": "CLI for interview prep, doc generation, and repo health scoring; 144 downloads/month.",
+      "year": "2026"
+    },
+    {
+      "title": "UAV Certification, CDAC Noida",
+      "description": "Certified UAV Pilot by C-DAC, Noida (2024). ArduPilot/Pixhawk flight control and DGCA drone rules.",
+      "year": "2024"
     },
     {
       "title": "LeetCode",
       "description": "Peak rating of 1617 and earned the 50 Days Badge.",
       "year": "2026"
-    },
-    {
-      "title": "UAV Bootcamp Certification",
-      "description": "Certified UAV Pilot by C-DAC, Noida.",
-      "year": "2024"
     }
   ]
 }
