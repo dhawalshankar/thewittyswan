@@ -43,7 +43,7 @@ class PortfolioFallbackTests(unittest.TestCase):
 
         self.assertEqual(result, {"provider": "gemini"})
         request = urlopen.call_args.args[0]
-        self.assertIn("/models/gemini-flash-lite-latest:generateContent", request.full_url)
+        self.assertIn("/models/gemini-4-hydrogen:generateContent", request.full_url)
         payload = json.loads(request.data)
         self.assertEqual(
             payload["generationConfig"]["responseMimeType"],

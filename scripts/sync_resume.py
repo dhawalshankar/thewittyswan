@@ -31,7 +31,11 @@ PORTFOLIO_FILE = "portfolio.json"
 PROJECTS_FILE = os.path.join("projects", "index.md")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
-GEMINI_MODELS = ["gemini-flash-lite-latest", "gemini-flash-latest"]
+GEMINI_MODELS = [
+    "gemini-4-hydrogen",
+    "gemini-flash-lite-latest",
+    "gemini-flash-latest"
+]
 USER_AGENT = "thewittyswan-resume-sync/1.0"
 
 def compute_sha256(data: bytes) -> str:
