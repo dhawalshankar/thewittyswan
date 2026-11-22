@@ -2,21 +2,22 @@
   "meta": {
     "website": "https://thewittyswan.space",
     "terminal": "https://thewittyswan.space/terminal",
-    "portfolio_version": "1.5",
-    "last_updated": "2026-11-13",
-    "resume_version": "2026.11.1"
+    "portfolio_version": "1.6",
+    "last_updated": "2026-11-22",
+    "resume_version": "2026.11.2"
   },
   "profile": {
     "name": "Dhawal Shukla",
-    "title": "Backend Software Engineer",
+    "title": "Forward Deployed Engineer",
     "tagline": [
       "Backend Engineering",
       "Go & Distributed Systems",
-      "Cloud Infrastructure"
+      "Cloud Infrastructure",
+      "AI & LLM Integration"
     ],
     "education_short": "B.Tech, Electronics & Communication Engineering • JIIT Noida (2023–2027)",
     "location": "Kanpur, Uttar Pradesh, India",
-    "summary": "Backend Software Engineer focused on Go, Node.js and Python. My projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. I also founded GolangForAll to share Go learning resources and bring developers together."
+    "summary": "Forward Deployed Engineer focused on turning practical needs into working software with Go, Python, Next.js and AI APIs. Shipped agentic AI workflows; founded VartaLang and built GolangForAll, with 1,000+ users across deployed platforms."
   },
   "contact": {
     "email": "dhawalmannu@gmail.com",
@@ -42,7 +43,7 @@
     }
   },
   "resume": {
-    "summary": "Backend Software Engineer focused on Go, Node.js and Python. My projects include distributed systems, microservices, real-time chat, payment flows and a Docker-isolated Go runner. I also founded GolangForAll to share Go learning resources and bring developers together.",
+    "summary": "Forward Deployed Engineer focused on turning practical needs into working software with Go, Python, Next.js and AI APIs. Shipped agentic AI workflows; founded VartaLang and built GolangForAll, with 1,000+ users across deployed platforms.",
     "pdf_url": "https://drive.google.com/file/d/1zodZ1AqMNmWbzGSzmJerYLQGAHMEUwTa/view?usp=sharing"
   },
   "education": [
@@ -64,12 +65,12 @@
       "role": "IT Operations Support Intern",
       "company": "Cape Comorin Children School",
       "location": "Kanpur (Hybrid)",
-      "duration": "Jun 2026 – Jul 2026",
-      "description": "Delivered a deployed Next.js demo with separately deployed Flask school and FastAPI Vritukul microservices; used Gemini to extract 100+ handwritten records and RapidFuzz-ranked search for about 30-second lookup. Implemented Firebase-verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary. Created calendar-grounded, staff-reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated Cape Comorin frontend merges on GitHub Actions lint, TypeScript checks and production builds.",
+      "duration": "Jun 2026 – Aug 2026",
+      "description": "Delivered a Next.js demo with separately hosted Flask and FastAPI services; used Gemini to extract 100+ handwritten records and RapidFuzz search for about 30‑second lookup. Set up Firebase‑verified access and RBAC for student and register workflows, with an admin system for 10+ staff accounts using Turso, Neon PostgreSQL and Cloudinary. Created staff‑reviewed AI notices using Groq’s Llama API and WeasyPrint PDFs; gated frontend merges on GitHub Actions lint, TypeScript checks and production builds.",
       "highlights": [
-        "Delivered a deployed Next.js demo with separately deployed Flask school and FastAPI Vritukul microservices; used Gemini to extract 100+ handwritten records and RapidFuzz-ranked search for about 30-second lookup.",
-        "Implemented Firebase-verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary.",
-        "Created calendar-grounded, staff-reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated Cape Comorin frontend merges on GitHub Actions lint, TypeScript checks and production builds."
+        "Delivered a Next.js demo with separately hosted Flask and FastAPI services; used Gemini to extract 100+ handwritten records and RapidFuzz search for about 30‑second lookup.",
+        "Implemented Firebase‑verified auth and RBAC for student and register workflows; designed the admin system for 10+ staff accounts using Turso, Neon PostgreSQL, and Cloudinary.",
+        "Created staff‑reviewed AI notices with Groq’s Llama API and WeasyPrint PDFs; gated frontend merges on GitHub Actions lint, TypeScript checks and production builds."
       ],
       "stack": [
         "Next.js",
@@ -92,10 +93,10 @@
       "company": "Codingo Forge",
       "location": "Noida (Remote)",
       "duration": "Apr 2026 – Jun 2026",
-      "description": "Dockerized backend services with a 3-engineer team, resolving environment and dependency-version mismatches; configured Clerk RBAC for employees, users, and super-admins in place of shared credentials. Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local-business digital-storefront workflows.",
+      "description": "Dockerized backend services with a 3‑engineer team to resolve environment mismatches; replaced shared credentials with Clerk RBAC for employees, users and super‑admins. Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local‑business storefront workflows.",
       "highlights": [
-        "Dockerized backend services with a 3-engineer team, resolving environment and dependency-version mismatches; configured Clerk RBAC for employees, users, and super-admins in place of shared credentials.",
-        "Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local-business digital-storefront workflows."
+        "Dockerized backend services with a 3‑engineer team to resolve environment mismatches; configured Clerk RBAC for employees, users, and super‑admins in place of shared credentials.",
+        "Implemented Node.js/Express.js REST APIs with MongoDB for a startup’s local‑business digital‑storefront workflows."
       ],
       "stack": [
         "Node.js",
@@ -111,11 +112,11 @@
   "projects": [
     {
       "name": "GoLab - Sandboxed Go Code Execution Playground",
-      "description": "Browser-to-container code execution playground for GolangForAll. Isolated compilation and execution in separate Docker containers with no network, non-root users, resource limits, and cached builds.",
+      "description": "Browser‑to‑container code execution playground for GolangForAll. Isolated compilation and execution in separate Docker containers with no network, non‑root users, resource limits, and cached builds.",
       "highlights": [
-        "Launched GoLab for 60+ users in GolangForAll’s 80+ member WhatsApp community: Next.js/Monaco frontend, Go runner on AWS EC2.",
-        "Isolated compilation and execution in separate Docker containers with no network, non-root users and resource limits.",
-        "Used read-only container root filesystems and cached compiler builds; mounted the runtime workspace read-only.",
+        "Launched GoLab for 60+ users in GolangForAll’s 80+ member community: Next.js/Monaco frontend, Go runner on AWS EC2.",
+        "Isolated compilation and execution in separate Docker containers with no network, non‑root users and resource limits.",
+        "Used read‑only container root filesystems and cached compiler builds; mounted the runtime workspace read‑only.",
         "Created GolangForAll’s Docusaurus platform for 200+ users with Go APIs, Neon PostgreSQL and Cloudinary."
       ],
       "stack": [
@@ -134,13 +135,12 @@
     },
     {
       "name": "VartaLang - Language Exchange and LMS",
-      "description": "Language exchange and learning platform featuring real-time chat, reciprocal multilingual matching across 33 languages, LMS with Razorpay payment processing, and Sarvam AI Indic translation & TTS integrations.",
+      "description": "Language exchange and learning platform featuring real‑time chat, reciprocal multilingual matching across 33 languages, LMS with Razorpay payment processing, and Sarvam AI Indic translation & TTS integrations.",
       "highlights": [
-        "Engineered VartaLang microservices with Node.js/Express, MongoDB and Socket.IO for reciprocal matching and real-time chat; deployed at api.vartalang.in with GitHub Actions checks. Reached 60+ sign-ups and 500+ visitors.",
+        "Engineered VartaLang microservices with Node.js/Express, MongoDB and Socket.IO for reciprocal matching and real‑time chat; deployed at api.vartalang.in with GitHub Actions checks. Reached 60+ sign‑ups and 500+ visitors.",
         "Launched learn.vartalang.in with freemium courses in 33 languages, instructor onboarding, sales reports and live Razorpay; implemented SSO between VartaLang and the LMS, with shared MongoDB user accounts and LMS data in Neon PostgreSQL.",
-        "Added Sarvam Translate and Google Cloud translation APIs for Indic and foreign-language chat, plus Sarvam Bulbul TTS, read receipts, blocking, reporting and per-user soft deletion.",
-        "Marked 7-day job listings as expired with node-cron; public queries also check the expiry date.",
-        "Kept expired listings in the admin panel for manual paid extensions, then automated cleanup with MongoDB TTL.",
+        "Integrated Sarvam Translate and Bulbul TTS plus Google Cloud translation APIs for multilingual chat; added read receipts, blocking, reporting and per‑user soft deletion.",
+        "Automated 7‑day job‑listing expiry with node-cron and public expiry checks; retained listings for manual paid extensions in the admin panel before MongoDB TTL cleanup.",
         "Selected for the Sarvam Startup Program; advanced to RideHack JIIT Round 2 for funding."
       ],
       "stack": [
@@ -159,14 +159,14 @@
       ],
       "link": "https://vartalang.in",
       "github": "",
-      "impact": "Combined language exchange, real-time messaging, reciprocal matching, and LMS course monetization into a production platform."
+      "impact": "Combined language exchange, real‑time messaging, reciprocal matching, and LMS course monetization into a production platform."
     },
     {
       "name": "Cosmo India Prakashan - E-Commerce and AI Inventory Platform",
-      "description": "AI-powered publishing and e-commerce platform for a family publishing house with polyglot persistence, cryptographic Razorpay payment verification, and staff-reviewed Gemini product catalog workflows.",
+      "description": "AI‑powered publishing and e‑commerce platform for a family publishing house with polyglot persistence, cryptographic Razorpay payment verification, and staff‑reviewed Gemini product catalog workflows.",
       "highlights": [
-        "Deployed a live storefront on Vercel with serverless APIs and MongoDB orders; verified Razorpay payments with HMAC-SHA256 and served 400+ visits.",
-        "Designed an Express admin API with JWT RBAC and polyglot persistence: PostgreSQL inventory and MongoDB orders; added staff-reviewed Gemini product entry."
+        "Deployed a live storefront on Vercel with serverless APIs and MongoDB orders; verified Razorpay payments with HMAC‑SHA256 and served 400+ visits.",
+        "Designed an Express admin API with JWT RBAC and polyglot persistence: PostgreSQL inventory and MongoDB orders; added staff‑reviewed Gemini product entry."
       ],
       "stack": [
         "React",
@@ -181,11 +181,11 @@
       ],
       "link": "https://cosmoindiaprakashan.in",
       "github": "",
-      "impact": "Transformed a traditional publishing business into an active digital storefront with cryptographic payment verification and an AI-assisted operational layer."
+      "impact": "Transformed a traditional publishing business into an active digital storefront with cryptographic payment verification and an AI‑assisted operational layer."
     },
     {
       "name": "thewittyswan Terminal",
-      "description": "Go/xterm.js portfolio with a virtual filesystem and rate-limited network diagnostics; GitHub Actions runs Go checks and deploys main-branch changes to a GCP VM via SSH.",
+      "description": "Go/xterm.js portfolio with a virtual filesystem and rate‑limited network diagnostics; GitHub Actions runs Go checks and deploys main‑branch changes to a GCP VM via SSH.",
       "stack": [
         "Go",
         "xterm.js",
@@ -196,7 +196,7 @@
       ],
       "link": "https://thewittyswan.space/terminal",
       "github": "",
-      "impact": "A personal corner of the internet where writing and engineering don't have to live in separate rooms."
+      "impact": "A personal corner of the internet where writing and engineering don’t have to live in separate rooms."
     },
     {
       "name": "GolangForAll",
@@ -214,11 +214,11 @@
       ],
       "link": "https://golangforall.in",
       "github": "",
-      "impact": "Connected learning, writing, and hands-on coding for a growing Go developer community."
+      "impact": "Connected learning, writing, and hands‑on coding for a growing Go developer community."
     },
     {
       "name": "Cape Comorin School Records",
-      "description": "Digitisation platform modernising school records. Multimodal Gemini OCR for 100+ handwritten records, RapidFuzz-ranked search for ~30s lookup, Firebase auth and RBAC for 10+ staff, and calendar-grounded AI notice generation with Groq Llama and WeasyPrint.",
+      "description": "Digitisation platform modernising school records. Multimodal Gemini OCR for 100+ handwritten records, RapidFuzz‑ranked search for ~30s lookup, Firebase auth and RBAC for 10+ staff, and calendar‑grounded AI notice generation with Groq Llama and WeasyPrint.",
       "stack": [
         "Next.js",
         "Flask",
@@ -249,11 +249,11 @@
       ],
       "link": "https://pypi.org/project/churn-cli/",
       "github": "",
-      "impact": "Brought LLM repository analysis into native command-line developer workflows."
+      "impact": "Brought LLM repository analysis into native command‑line developer workflows."
     },
     {
       "name": "AuralAce",
-      "description": "Audio signal processing platform implementing FFT equalisation, convolution reverb, waveform visualisation and interactive before-and-after playback.",
+      "description": "Audio signal processing platform implementing FFT equalisation, convolution reverb, waveform visualisation and interactive before‑and‑after playback.",
       "stack": [
         "Python",
         "FastAPI",
@@ -265,11 +265,11 @@
       ],
       "link": "https://auralace.vercel.app",
       "github": "",
-      "impact": "Turned abstract audio-processing operations into an interactive experiment that can be heard rather than merely described."
+      "impact": "Turned abstract audio‑processing operations into an interactive experiment that can be heard rather than merely described."
     },
     {
       "name": "ElectiveXchange",
-      "description": "Two-way elective course matcher with priority-ranked preferences, real-time updates, and Firebase authentication. 300+ organic signups.",
+      "description": "Two‑way elective course matcher with priority‑ranked preferences, real‑time updates, and Firebase authentication. 300+ organic signups.",
       "stack": [
         "React",
         "Tailwind CSS",
@@ -313,6 +313,9 @@
     "Groq API",
     "Sarvam AI",
     "Nodemailer SMTP",
+    "Bulbul TTS",
+    "Google Cloud translation APIs",
+    "node-cron",
     "Computer Networks",
     "Operating Systems",
     "Object Oriented Programming",
@@ -345,7 +348,8 @@
       "REST APIs",
       "WebSocket",
       "CRON Jobs",
-      "Microservices"
+      "Microservices",
+      "node-cron"
     ],
     "databases": [
       "MongoDB",
@@ -369,7 +373,9 @@
       "Cloudinary",
       "Groq API",
       "Sarvam AI",
-      "Nodemailer SMTP"
+      "Nodemailer SMTP",
+      "Bulbul TTS",
+      "Google Cloud translation APIs"
     ],
     "cs_fundamentals": [
       "Computer Networks",
@@ -414,7 +420,7 @@
     },
     {
       "date": "2026",
-      "event": "Joined Cape Comorin Children School as IT Operations Support Intern (Next.js, Flask, FastAPI microservices, Gemini OCR, RapidFuzz)."
+      "event": "Joined Cape Comorin Children School as IT Operations Support Intern (Next.js, Flask, FastAPI microservices, Gemini OCR)."
     },
     {
       "date": "2026",
@@ -443,6 +449,10 @@
     {
       "date": "2026",
       "event": "Built thewittyswan Terminal – self-hosted Go + xterm.js developer terminal with live network security lab on GCP."
+    },
+    {
+      "date": "2026",
+      "event": "Shipped agentic AI workflows across multiple platforms."
     }
   ],
   "achievements": [
@@ -474,6 +484,11 @@
     {
       "title": "LeetCode",
       "description": "Peak contest rating of 1713 and earned the 50 Days Badge.",
+      "year": "2026"
+    },
+    {
+      "title": "Agentic AI Workflows",
+      "description": "Shipped agentic AI workflows across multiple platforms.",
       "year": "2026"
     }
   ]
