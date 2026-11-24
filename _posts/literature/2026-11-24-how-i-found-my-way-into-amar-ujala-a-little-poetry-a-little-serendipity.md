@@ -6,23 +6,47 @@ categories:
 layout: post
 ---
 
+### A childhood fascination with words, the poets who inspired me, and a journey that found its way into print.
+
 *Some people discover poetry. Some grow up with it. I suppose I was fortunate enough to belong to the latter.*
 
 I cannot quite remember when poetry first entered my life, but I can certainly remember how it made me feel.
 
-As a child, I was an unusually enthusiastic reader. Books were companions, television was occasionally a classroom, and poetry was a world I could never quite get enough of. I would spend hours reading, listening to poets recite their compositions, and wondering how a handful of words could evoke such extraordinary emotions.
+As a child, I was an unusually enthusiastic reader. Books were companions, television was occasionally a classroom, and poetry was a world I could never quite get enough of.
 
-One of my earliest introductions to the wonderful world of Hindi poetry was through television programmes like **Wah Wah Kya Baat Hai**, hosted by the ever-charismatic Shailesh Lodha, and later **Bahut Khoob**. Those evenings introduced me to the magic of Kavi Sammelans — the laughter, the applause, the pauses, the punchlines, and, above all, the sheer power of a poet holding an audience captive with nothing but words.
+I would spend hours reading, listening to poets recite their compositions, and wondering how a handful of words could evoke such extraordinary emotions.
 
-I found myself listening to Vishnu Saxena, Anjum Rehbar, Kumar Vishwas, and numerous other poets whose recitations left an indelible impression on me. There was something almost theatrical about poetry in those gatherings. A couplet could make an audience erupt in laughter one moment and fall into contemplative silence the next.
+One of my earliest introductions to the wonderful world of Hindi poetry was through television programmes like **Wah Wah Kya Baat Hai**, hosted by the ever-charismatic Shailesh Lodha, and *Bahut Khoob*.
+
+<img src="https://m.media-amazon.com/images/M/MV5BNzg0YTBlZjAtM2MxNS00YzhiLWEzZmMtYzliZDJkNGE5ZGI4XkEyXkFqcGc%40._V1_.jpg" alt="Wah Wah Kya Baat Hai" style="display:block;width:100%;max-width:620px;height:auto;max-height:360px;object-fit:contain;border-radius:12px;margin:24px auto;" />
+
+Those evenings introduced me to the magic of Kavi Sammelans — the laughter, the applause, the pauses, the punchlines, and, above all, the sheer power of a poet holding an audience captive with nothing but words.
+
+I found myself listening to **Vishnu Saxena, Anjum Rehbar, Kumar Vishwas**, and numerous other poets whose recitations left an indelible impression on me.
+
+There was something almost theatrical about poetry in those gatherings. A couplet could make an audience erupt in laughter one moment and fall into contemplative silence the next.
+
+## The Literary Giants Who Shaped My Imagination
 
 And then there were the books.
 
-I read Ramdhari Singh Dinkar, Suryakant Tripathi 'Nirala', Kumar Vishwas, and several other literary giants. I found myself particularly drawn to **Gopal Das Neeraj**, whose poetry remains one of my greatest literary affections. His *Dard Diya Hai* was among those works that stayed with me long after I had turned the final page.
+I read Ramdhari Singh Dinkar, Suryakant Tripathi 'Nirala', Kumar Vishwas, and several other literary giants. I found myself particularly drawn to **Gopal Das Neeraj**, whose poetry remains one of my greatest literary affections.
 
-Dinkar's *Urvashi* and *Rashmirathi* introduced me to the grandeur of language, mythology, heroism, and human emotion. I also discovered *Kanpur Ke Kavi*, a wonderful collection that brought me closer to the city's rich literary culture.
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Poet_Gopaldas_Neeraj.jpg" alt="Gopal Das Neeraj" style="display:block;width:100%;max-width:320px;height:auto;max-height:420px;object-fit:contain;border-radius:12px;margin:24px auto;" />
 
-And, of course, I found immense inspiration in the poetry and public oratory of our beloved **Atal Bihari Vajpayee Ji**. His words carried a rare combination of conviction, tenderness, patriotism, and literary elegance.
+His *Dard Diya Hai* was among those works that stayed with me long after I had turned the final page.
+
+Dinkar's *Urvashi* and *Rashmirathi* introduced me to the grandeur of language, mythology, heroism, and human emotion.
+
+<img src="https://litfind.bookscape.com/wp-content/uploads/2025/09/2-Rashmirathi.jpg" alt="Rashmirathi by Ramdhari Singh Dinkar" style="display:block;width:100%;max-width:300px;height:auto;max-height:430px;object-fit:contain;border-radius:12px;margin:24px auto;" />
+
+I also discovered *Kanpur Ke Kavi*, a wonderful collection that brought me closer to the city's rich literary culture.
+
+And, of course, I found immense inspiration in the poetry and public oratory of our beloved **Atal Bihari Vajpayee Ji**.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Atal_Bihari_Vajpayee_tribute_image_%28cropped%29.jpg" alt="Atal Bihari Vajpayee" style="display:block;width:100%;max-width:320px;height:auto;max-height:420px;object-fit:contain;border-radius:12px;margin:24px auto;" />
+
+His words carried a rare combination of conviction, tenderness, patriotism, and literary elegance.
 
 Perhaps I was unconsciously collecting all these influences, not knowing that one day they would find their way into my own writing.
 
@@ -30,11 +54,15 @@ Perhaps I was unconsciously collecting all these influences, not knowing that on
 
 My tryst with publication began rather early.
 
-In the sixth grade, one of my poems found its way into **Kidz Herald**, a newspaper for children. I still find that rather amusing — a school-going child, scribbling verses, suddenly finding his words in print!
+In the sixth grade, one of my poems found its way into **Kidz Herald**, a newspaper for children.
+
+I still find that rather amusing — a school-going child, scribbling verses, suddenly finding his words in print!
 
 At that age, I could hardly comprehend what being published meant. But seeing my own composition in a newspaper was an experience I would carry with me for years.
 
-I continued writing through my school days. I would compose poems, recite them, and sometimes even sing them. The notebook gradually became a repository of thoughts, observations, emotions, and the occasional dramatic expression that only a young poet could produce.
+I continued writing through my school days. I would compose poems, recite them, and sometimes even sing them.
+
+The notebook gradually became a repository of thoughts, observations, emotions, and the occasional dramatic expression that only a young poet could produce.
 
 I was not particularly concerned with becoming a poet. I simply enjoyed the act of putting thoughts into words.
 
@@ -42,7 +70,9 @@ I was not particularly concerned with becoming a poet. I simply enjoyed the act 
 
 Years passed, but poetry never quite left.
 
-When I entered university, I found another opportunity to indulge in this old affection. During my university's induction programme, I participated in a Slam Poetry competition and secured the **first prize**.
+When I entered university, I found another opportunity to indulge in this old affection.
+
+During my university's induction programme, I participated in a **Slam Poetry competition and secured the first prize.**
 
 It was a gratifying moment. Something that had begun as a childhood pastime had found an audience once again.
 
@@ -64,7 +94,11 @@ And the very next morning, I found my composition published in Amar Ujala.
 
 There is a peculiar joy in seeing your words in print. Especially when those words have travelled such a long way — from the pages of books you once admired, through the notebooks you filled as a child, to a newspaper that suddenly decides to give them a place of their own.
 
-I had spent years reading the words of Dinkar, Neeraj, Nirala, and countless others. I had listened to poets command entire auditoriums with their recitations. I had once been that little boy reading poetry in the sixth grade.
+I had spent years reading the words of Dinkar, Neeraj, Nirala, and countless others.
+
+I had listened to poets command entire auditoriums with their recitations.
+
+I had once been that little boy reading poetry in the sixth grade.
 
 And now, my own words had found their way into a newspaper.
 
@@ -84,26 +118,23 @@ And perhaps that is what I cherish most.
 
 I never really set out to become a published poet. I merely followed the things that fascinated me.
 
-**A child who once listened to poets on television eventually found his own words in the newspaper.**
+> A child who once listened to poets on television eventually found his own words in the newspaper.
 
 And if there is one thing this little journey has taught me, it is this:
 
-*You never know where a childhood fascination might take you. Sometimes, it takes you straight to the printed page.*
+**You never know where a childhood fascination might take you. Sometimes, it takes you straight to the printed page.**
 
 ---
 
-### A little glimpse of the moment
+## A Little Glimpse of the Moment
 
 I shared a glimpse of this literary milestone here:
 
-[View the Instagram post](https://www.instagram.com/p/DLEPRgkTWUj/)
-
-
-
-<blockquote class="instagram-media"
-  data-instgrm-permalink="https://www.instagram.com/p/DLEPRgkTWUj/"
-  data-instgrm-version="14">
-</blockquote>
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLEPRgkTWUj/" data-instgrm-version="14" style="background:#FFF;border:0;margin:1px auto;max-width:540px;min-width:326px;width:99%;"></blockquote>
 <script async src="https://www.instagram.com/embed.js"></script>
 
+---
 
+*Written with affection for the poets who inspired me, the books that raised me, and the little boy who never stopped writing.*
+
+**— Dhawal Shukla**
