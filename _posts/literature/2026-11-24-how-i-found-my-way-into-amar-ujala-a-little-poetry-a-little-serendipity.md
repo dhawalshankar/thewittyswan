@@ -30,9 +30,9 @@ There was something almost theatrical about poetry in those gatherings. A couple
 
 And then there were the books.
 
-I read Ramdhari Singh Dinkar, Suryakant Tripathi 'Nirala', Kumar Vishwas, and several other literary giants. I found myself particularly drawn to **Gopal Das Neeraj**, whose poetry remains one of my greatest literary affections.
+I read Ramdhari Singh Dinkar, Suryakant Tripathi 'Nirala', and several other literary giants. I found myself particularly drawn to **Gopal Das Neeraj**, whose poetry remains one of my greatest literary affections.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Poet_Gopaldas_Neeraj.jpg" alt="Gopal Das Neeraj" style="display:block;width:100%;max-width:320px;height:auto;max-height:420px;object-fit:contain;border-radius:12px;margin:24px auto;" />
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjU5JMU2pc1trEFhueymuuxfjumu_t0en-S0-4e45tcQ&s=10" alt="Gopal Das Neeraj" style="display:block;width:100%;max-width:320px;height:auto;max-height:420px;object-fit:contain;border-radius:12px;margin:24px auto;" />
 
 His *Dard Diya Hai* was among those works that stayed with me long after I had turned the final page.
 
